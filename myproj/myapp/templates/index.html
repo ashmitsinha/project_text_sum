@@ -1,0 +1,25 @@
+<!-- myapp/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarizer</title>
+</head>
+<body>
+    <form method="post" action="output">
+        {% csrf_token %}
+        <label for="data">Input Data:</label>
+        <textarea name="data" rows="4" cols="50"></textarea><br>
+        <label for="maxL">Max Length:</label>
+        <input type="number" name="maxL" value="300"><br>
+        <input type="submit" value="Summarize">
+    </form>
+
+    {% if result %}
+        <h3>Summary:</h3>
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>

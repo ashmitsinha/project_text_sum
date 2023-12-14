@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.index,name='index'),
     path('output', views.output,name='generate'),
     path('texttospeech',views.texttospeech,name='texttospeech'),
-    path('texttotranslate',views.texttotranslate,name='texttotranslate'),
+    # path('texttotranslate',views.texttotranslate,name='texttotranslate'),
+    path('new_page/', views.new_page, name='new_page'),
 ]

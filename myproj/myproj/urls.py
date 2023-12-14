@@ -19,6 +19,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
     # path('textToSpeech/', include('textToSpeech.urls')),
+    # path('pdfviewer/', include('pdfviewer.urls')),
 ]
 
 

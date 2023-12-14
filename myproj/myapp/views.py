@@ -66,26 +66,46 @@ def texttospeech(request):
     engine = pyttsx3.init()
     engine.setProperty('rate', rate)
     text = request.session.get('text_for_speech', '')
-        # Use the engine to speak the given text                                         audio
+        # Use the engine to speak the given text
     engine.say(text)
         # Wait for the speech to finish
     engine.runAndWait()
     return render(request, 'output.html', {"result": text})
 
 
-def texttotranslate(request):
+# def texttotranslate(request):
     # Ensure 'text_for_translate' is present in the session
-    text = request.session.get('text_for_translate','')
-    print(text)
-    if text is  None:
-        # If text is not None, proceed with translation
-        translator = Translator()
-        translation = translator.translate(text, dest='hi')
+    # text = request.session.get('text_for_translate','')
+    # print(text)
+    # if text is  None:
+    #     # If text is not None, proceed with translation
+    #     translator = Translator()
+    #     translation = translator.translate(text, dest='hi')
 
-        # Set the translated text to a new session key
-        request.session['translated_text'] = translation
+    #     # Set the translated text to a new session key
+    #     request.session['translated_text'] = translation
 
-        return render(request, 'output.html', {"result": translation.text})
-    else:
-        # If 'text_for_translate' is not present, handle accordingly
-        return render(request, 'output.html', {"result": "Text for translation not found in session"})
+    #     return render(request, 'output.html', {"result": translation.text})
+    # else:
+    #     # If 'text_for_translate' is not present, handle accordingly
+    #     return render(request, 'output.html', {"result": "Text for translation not found in session"})
+
+# def translate_text(input_text, target_language):
+#     # Replace 'YOUR_TRANSLATION_API_KEY' with your actual translation API key
+#     translation_api_url = f"https://translation.googleapis.com/language/translate/v2?key=YOUR_TRANSLATION_API_KEY"
+
+#     payload = {
+#         "q": input_text,
+#         "target": target_language,
+#     }
+
+#     response = requests.post(translation_api_url, json=payload)
+#     translation_data = response.json()
+
+#     # Assuming the translation API returns the translated text in the 'translatedText' field
+#     translated_text = translation_data["data"]["translations"][0]["translatedText"]
+
+#     return translated_text
+
+def new_page(request):
+    return render(request, 'new_page.html')
